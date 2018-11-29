@@ -1,5 +1,6 @@
 # Docker - Wordpress
 
+Documentation: https://docs.docker.com/compose/wordpress/
 
 This is a Docker based local development environment for WordPress.
 `Create file with name: docker-compose.yml`

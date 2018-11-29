@@ -3,8 +3,9 @@
 
 This is a Docker based local development environment for WordPress.
 
-
-##Motivação |
+# Requirements
+ - Docker
+ - docker-compose
 
 version: '3.3'
 
@@ -30,8 +31,8 @@ services:
     - ./wp-content/:/var/www/html/wp-content
     restart: always
     environment:
-      VIRTUAL_HOST: "${DOCKER_DEV_DOMAIN:-datapage.app}"
-      WORDPRESS_DB_HOST: db:3306
+      VIRTUAL_HOST: "${DOCKER_DEV_DOMAIN:-[nomeprojeto].app}"
+      WORDPRESS_DB_HOST: [db]:3306
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: wordpress
 

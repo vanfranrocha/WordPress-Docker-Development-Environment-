@@ -9,8 +9,8 @@ This is a Docker based local development environment for WordPress.
  - Docker
  - docker-compose
 
-```version: '3.3'
-
+version: '3.3'
+```
 services:
   db:
     image: mysql:5.7
@@ -45,8 +45,10 @@ services:
     ports:
     - 22222:80
 volumes:
-  db_data:```
-  
+  db_data: 
+
+```  
+
 Config file wp-config:
 
 ```define('DB_NAME', getenv('DB_NAME'));
@@ -60,7 +62,9 @@ define('DB_PASSWORD', getenv('DB_PASS'));
 
 
 /** name host MySQL */
-define('DB_HOST', getenv('DB_HOST'));```
+define('DB_HOST', getenv('DB_HOST'));
+
+```
 
  ## After
 

@@ -9,6 +9,59 @@ This is a Docker based local development environment for WordPress.
  - Docker
  - docker-compose
 
+`version: '3.3'
+
+services:
+  db:
+    image: mysql:5.7
+    volumes:
+    - db_data:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: somewordpress
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+
+  wordpress:
+    depends_on:
+    - db
+    image: wordpress:latest
+    ports:
+    - "8000:80"
+    volumes:
+    - ./wp-content/:/var/www/html/wp-content
+    restart: always
+    environment:
+      VIRTUAL_HOST: "${DOCKER_DEV_DOMAIN:-[nomeprojeto].app}"
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+    - 22222:80
+volumes:
+  db_data:`
+  
+Config file wp-config:
+
+`define('DB_NAME', getenv('DB_NAME'));
+
+/** User db MySQL */
+define('DB_USER', getenv('DB_USER'));
+
+
+/** password MySQL */
+define('DB_PASSWORD', getenv('DB_PASS'));
+
+
+/** name host MySQL */
+define('DB_HOST', getenv('DB_HOST'));`
+
  ## After
 
 `docker-compose pull`

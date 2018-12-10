@@ -1,4 +1,4 @@
-# WordPress-Docker-Development-Environment-
+# WordPress-Docker-Development-Environment
 
 Documentation: (https://docs.docker.com/compose/wordpress/)
 

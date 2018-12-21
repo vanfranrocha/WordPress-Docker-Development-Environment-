@@ -34,9 +34,9 @@ services:
     restart: always
     environment:
       VIRTUAL_HOST: "${DOCKER_DEV_DOMAIN:-[nomeprojeto].app}"
-      WORDPRESS_DB_HOST: db:3306
-      WORDPRESS_DB_USER: wordpress
-      WORDPRESS_DB_PASSWORD: wordpress
+      DB_HOST: db
+      DB_USER: wordpress
+      DB_PASSWORD: wordpress
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
@@ -51,7 +51,7 @@ volumes:
 
 Config file wp-config:
 
-```define('DB_NAME', getenv('DB_NAME'));
+```define('DB_NAME', getenv('wordpress'));
 
 /** User db MySQL */
 define('DB_USER', getenv('DB_USER'));
